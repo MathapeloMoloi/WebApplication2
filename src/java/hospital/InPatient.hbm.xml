@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 10:54:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="oldagehospital" name="hospital.InPatient" optimistic-lock="version" table="in_patient">
+    <composite-id class="hospital.InPatientId" name="id">
+      <key-property name="inPatientNo" type="string">
+        <column length="5" name="in_patient_no"/>
+      </key-property>
+      <key-property name="wardWardNo" type="string">
+        <column length="6" name="ward_ward_no"/>
+      </key-property>
+      <key-property name="localDoctorClinicNo" type="string">
+        <column length="5" name="local_doctor_clinic_no"/>
+      </key-property>
+      <key-property name="patientMedicationInPatientNo" type="string">
+        <column length="5" name="patient_medication_in_patient_no"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="hospital.LocalDoctor" fetch="select" insert="false" name="localDoctor" update="false">
+      <column length="5" name="local_doctor_clinic_no" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="hospital.PatientMedication" fetch="select" insert="false" name="patientMedication" update="false">
+      <column length="5" name="patient_medication_in_patient_no" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="hospital.Ward" fetch="select" insert="false" name="ward" update="false">
+      <column length="6" name="ward_ward_no" not-null="true"/>
+    </many-to-one>
+    <property name="patientFirstName" type="string">
+      <column length="20" name="patient_first_name"/>
+    </property>
+    <property name="patientLastName" type="string">
+      <column length="20" name="patient_last_name"/>
+    </property>
+    <property name="streetName" type="string">
+      <column length="30" name="street_name"/>
+    </property>
+    <property name="houseNo" type="java.lang.Integer">
+      <column name="house_no"/>
+    </property>
+    <property name="city" type="string">
+      <column length="15" name="city"/>
+    </property>
+    <property name="cellphoneNo" type="java.lang.Integer">
+      <column name="cellphone_no"/>
+    </property>
+    <property name="dateOfBirth" type="date">
+      <column length="10" name="date_of_birth"/>
+    </property>
+    <property name="sex" type="java.lang.Character">
+      <column length="1" name="sex"/>
+    </property>
+    <property name="maritalStatus" type="java.lang.Character">
+      <column length="1" name="marital_status"/>
+    </property>
+    <property name="dateRegistration" type="date">
+      <column length="10" name="date_registration"/>
+    </property>
+    <property name="datePlacedWard" type="date">
+      <column length="10" name="date_placed_ward"/>
+    </property>
+    <property name="dateExpLeave" type="date">
+      <column length="10" name="date_exp_leave"/>
+    </property>
+    <property name="actualDateLeft" type="date">
+      <column length="10" name="actual_date_left"/>
+    </property>
+    <property name="wardNo" type="string">
+      <column length="6" name="ward_no"/>
+    </property>
+  </class>
+</hibernate-mapping>

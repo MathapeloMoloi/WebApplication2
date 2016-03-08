@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 10:54:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="oldagehospital" name="hospital.Staff" optimistic-lock="version" table="staff">
+    <id name="staffNo" type="string">
+      <column length="20" name="staff_no"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="lastName" type="string">
+      <column length="45" name="last_name"/>
+    </property>
+    <property name="firstName" type="string">
+      <column length="45" name="first_name"/>
+    </property>
+    <property name="streetName" type="string">
+      <column length="225" name="Street_name"/>
+    </property>
+    <property name="houseNumber" type="string">
+      <column length="5" name="house_number"/>
+    </property>
+    <property name="city" type="string">
+      <column length="45" name="city"/>
+    </property>
+    <property name="cellphoneNo" type="string">
+      <column length="25" name="cellphone_no"/>
+    </property>
+    <property name="dateOfBirth" type="date">
+      <column length="10" name="date_of_birth"/>
+    </property>
+    <property name="sex" type="string">
+      <column length="5" name="sex"/>
+    </property>
+    <property name="positionHeld" type="string">
+      <column length="45" name="position_held"/>
+    </property>
+    <property name="currentSalary" type="java.lang.Double">
+      <column name="current_salary" precision="22" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="wardRequisitions" table="ward_requisition">
+      <key>
+        <column length="20" name="staff_staff_no" not-null="true"/>
+      </key>
+      <one-to-many class="hospital.WardRequisition"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="patientAppointments" table="patient_appointment">
+      <key>
+        <column length="20" name="staff_staff_no" not-null="true"/>
+      </key>
+      <one-to-many class="hospital.PatientAppointment"/>
+    </set>
+  </class>
+</hibernate-mapping>

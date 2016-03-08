@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="oldagehospital"/>
+  <table-filter match-name="ward_requisition"/>
+  <table-filter match-name="out_patient"/>
+  <table-filter match-name="in_patient"/>
+  <table-filter match-name="local_doctor"/>
+  <table-filter match-name="ward"/>
+  <table-filter match-name="patient_medication"/>
+  <table-filter match-name="staff"/>
+  <table-filter match-name="patient_appointment"/>
+</hibernate-reverse-engineering>

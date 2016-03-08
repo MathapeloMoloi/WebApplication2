@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 10:54:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="oldagehospital" name="hospital.WardRequisition" optimistic-lock="version" table="ward_requisition">
+    <composite-id class="hospital.WardRequisitionId" name="id">
+      <key-property name="requisitionNo" type="string">
+        <column length="5" name="requisition_no"/>
+      </key-property>
+      <key-property name="staffStaffNo" type="string">
+        <column length="20" name="staff_staff_no"/>
+      </key-property>
+      <key-property name="wardWardNo" type="string">
+        <column length="6" name="ward_ward_no"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="hospital.Staff" fetch="select" insert="false" name="staff" update="false">
+      <column length="20" name="staff_staff_no" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="hospital.Ward" fetch="select" insert="false" name="ward" update="false">
+      <column length="6" name="ward_ward_no" not-null="true"/>
+    </many-to-one>
+    <property name="drugNo" type="string">
+      <column length="5" name="drug_no"/>
+    </property>
+    <property name="description" type="string">
+      <column length="20" name="description"/>
+    </property>
+    <property name="dosage" type="string">
+      <column length="10" name="dosage"/>
+    </property>
+    <property name="methodOfAdmin" type="string">
+      <column length="10" name="method_of_admin"/>
+    </property>
+    <property name="quatity" type="java.lang.Integer">
+      <column name="quatity"/>
+    </property>
+    <property name="dateOrdered" type="date">
+      <column length="10" name="date_ordered"/>
+    </property>
+  </class>
+</hibernate-mapping>

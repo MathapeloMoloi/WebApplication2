@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 10:54:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="oldagehospital" name="hospital.PatientMedication" optimistic-lock="version" table="patient_medication">
+    <id name="inPatientNo" type="string">
+      <column length="5" name="in_patient_no"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="drugNo" type="java.lang.Integer">
+      <column name="drug_no"/>
+    </property>
+    <property name="drugName" type="string">
+      <column length="20" name="drug_name"/>
+    </property>
+    <property name="unitPerDay" type="java.lang.Integer">
+      <column name="unit_per_day"/>
+    </property>
+    <property name="methodOfAdmin" type="string">
+      <column length="10" name="method_of_admin"/>
+    </property>
+    <property name="startDate" type="date">
+      <column length="10" name="start_date"/>
+    </property>
+    <property name="finishDate" type="date">
+      <column length="10" name="finish_date"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="inPatients" table="in_patient">
+      <key>
+        <column length="5" name="patient_medication_in_patient_no" not-null="true"/>
+      </key>
+      <one-to-many class="hospital.InPatient"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 10:54:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="oldagehospital" name="hospital.OutPatient" optimistic-lock="version" table="out_patient">
+    <id name="outPatientNo" type="string">
+      <column length="5" name="out_patient_no"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="firstName" type="string">
+      <column length="20" name="first_name"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="20" name="last_name"/>
+    </property>
+    <property name="streetName" type="string">
+      <column length="30" name="street_name"/>
+    </property>
+    <property name="houseNo" type="java.lang.Integer">
+      <column name="house_no"/>
+    </property>
+    <property name="city" type="string">
+      <column length="15" name="city"/>
+    </property>
+    <property name="cellphoneNo" type="java.lang.Integer">
+      <column name="cellphone_no"/>
+    </property>
+    <property name="dateOfBirth" type="date">
+      <column length="10" name="date_of_birth"/>
+    </property>
+    <property name="sex" type="java.lang.Character">
+      <column length="1" name="sex"/>
+    </property>
+    <property name="appDate" type="date">
+      <column length="10" name="app_date"/>
+    </property>
+    <property name="appTime" type="time">
+      <column length="8" name="app_time"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="patientAppointments" table="patient_appointment">
+      <key>
+        <column length="5" name="out_patient_out_patient_no" not-null="true"/>
+      </key>
+      <one-to-many class="hospital.PatientAppointment"/>
+    </set>
+  </class>
+</hibernate-mapping>

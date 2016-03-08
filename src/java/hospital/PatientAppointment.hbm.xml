@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 23, 2016 10:54:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="oldagehospital" name="hospital.PatientAppointment" optimistic-lock="version" table="patient_appointment">
+    <composite-id class="hospital.PatientAppointmentId" name="id">
+      <key-property name="appNo" type="int">
+        <column name="app_no"/>
+      </key-property>
+      <key-property name="staffStaffNo" type="string">
+        <column length="20" name="staff_staff_no"/>
+      </key-property>
+      <key-property name="outPatientOutPatientNo" type="string">
+        <column length="5" name="out_patient_out_patient_no"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="hospital.OutPatient" fetch="select" insert="false" name="outPatient" update="false">
+      <column length="5" name="out_patient_out_patient_no" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="hospital.Staff" fetch="select" insert="false" name="staff" update="false">
+      <column length="20" name="staff_staff_no" not-null="true"/>
+    </many-to-one>
+    <property name="appDate" type="date">
+      <column length="10" name="app_date"/>
+    </property>
+    <property name="appTime" type="date">
+      <column length="10" name="app_time"/>
+    </property>
+  </class>
+</hibernate-mapping>
